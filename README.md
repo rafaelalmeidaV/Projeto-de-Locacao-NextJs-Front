@@ -1,6 +1,7 @@
 # Locação de Imóveis - Frontend
 
 Este é o projeto de frontend para a aplicação de Locação de Imóveis, desenvolvida utilizando Next.js.
+Este projeto é um complemento do outro repositorio [Projeto-de-locacao-NestJs-Back](https://github.com/rafaelalmeidaV/Projeto-de-locacao-NestJs-Back)
 
 ## Configuração do Ambiente
 

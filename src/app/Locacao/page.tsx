@@ -13,6 +13,17 @@ const CadastrarLocacao = () => {
         imovel: '',
     });
 
+    const [locacoesCadastradas, setLocacoesCadastradas] = useState([
+        {
+            id: '',
+            dataInicio: '',
+            dataFim: '',
+            status: '',
+            cliente: '',
+            imovel: '',
+        }
+    ]);
+
     const handleChange = (event: any) => {
         if (event.target.name === 'cliente' || event.target.name === 'imovel') {
             setLocacao({ ...locacao, [event.target.name]: parseInt(event.target.value) });
@@ -34,21 +45,21 @@ const CadastrarLocacao = () => {
         }
     };
 
-    // const fetchImoveisCadastrados = () => {
-    //     // Lógica para buscar os imóveis cadastrados do servidor
-    //     axios.get('http://localhost:3000/imovel')
-    //         .then((response) => {
-    //             setImoveisCadastrados(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.error('Erro ao buscar imóveis cadastrados:', error);
-    //         });
-    // };
+    const fetchLocacoesCadastradas = () => {
+        // Lógica para buscar os imóveis cadastrados do servidor
+        axios.get('http://localhost:3000/locacao')
+            .then((response) => {
+                setLocacoesCadastradas(response.data);
+            })
+            .catch((error) => {
+                console.error('Erro ao buscar locações cadastradas:', error);
+            });
+    };
 
-    // useEffect(() => {
-    //     // Carregar a lista de imóveis ao montar o componente
-    //     fetchImoveisCadastrados();
-    // }, []);
+    useEffect(() => {
+        // Carregar a lista de imóveis ao montar o componente
+        fetchLocacoesCadastradas();
+    }, []);
 
     return (
         <div className='items-center h-[100vh] flex justify-evenly bg-gray-200'>
@@ -61,39 +72,46 @@ const CadastrarLocacao = () => {
                     <label className='mt-2'>Data de Fim:</label>
                     <input className="form-control  mb-2" type="text" name="dataFim" value={locacao.dataFim} onChange={handleChange} />
 
-                    <label className='mt-2'>ID do cliente</label>
+                    <label className='mt-2'>Status:</label>
+                    <input className="form-control  mb-2" type="text" name="status" value={locacao.status} onChange={handleChange} />
+
+                    <label className='mt-2'>ID do cliente:</label>
                     <input className="form-control  mb-2" type="number" name="cliente" value={locacao.cliente} onChange={handleChange} />
 
-                    <label className='mt-2'>ID do Imovel</label>
+                    <label className='mt-2'>ID do Imovel:</label>
                     <input className="form-control  mb-2" type="number" name="imovel" value={locacao.imovel} onChange={handleChange} />
 
                     <button className='btn btn-primary mt-2' type="submit">Cadastrar</button>
                 </form>
             </div>
-            {/* <div >
+            <div >
 
                 <div className=''>
-                    <h1>Imóveis Cadastrados</h1>
+                    <h1>Imóveis Locados</h1>
                     <table className="table">
                         <thead>
                             <tr>
-                                <th>Tipo</th>
-                                <th>Endereço</th>
-                                <th>Valor</th>
+                                <th>Data de Inicio</th>
+                                <th>Data de Fim</th>
+                                <th>Status</th>
+                                <th>Cliente</th>
+                                <th>Imovel</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {imoveisCadastrados.map((imovel) => (
-                                <tr key={imovel.id}>
-                                    <td>{imovel.tipo}</td>
-                                    <td>{imovel.endereco}</td>
-                                    <td>{imovel.valor}</td>
+                            {locacoesCadastradas.map((locacao) => (
+                                <tr key={locacao.id}>
+                                    <td>{locacao.dataInicio}</td>
+                                    <td>{locacao.dataFim}</td>
+                                    <td>{locacao.status}</td>
+                                    <td>{locacao.cliente}</td>
+                                    <td>{locacao.imovel}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
-            </div> */}
+            </div>
         </div>
 
 

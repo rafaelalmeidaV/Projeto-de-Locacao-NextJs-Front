@@ -18,7 +18,7 @@ Este é o projeto de frontend para a aplicação de Locação de Imóveis, desen
 3. **Configurar Variáveis de Ambiente:**
    Crie um arquivo `.env.local` na raiz do projeto e configure as variáveis de ambiente necessárias, por exemplo:
    ```env
-   NEXT_PUBLIC_API_BASE_URL=http://localhost:3000
+   NEXT_PUBLIC_API_BASE_URL=http://localhost:4000
    ```
 
 ## Rodando o Projeto
@@ -29,7 +29,7 @@ Execute o seguinte comando para iniciar o servidor de desenvolvimento:
 npm run dev
 ```
 
-O projeto estará disponível em [http://localhost:3000](http://localhost:3000).
+O projeto estará disponível em [http://localhost:4000](http://localhost:4000).
 
 ## Funcionalidades
 
